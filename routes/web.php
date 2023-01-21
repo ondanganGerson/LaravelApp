@@ -29,15 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    //Post
-    // Route::post('/', [PostController::class, 'store']);
-    Route::resource('post',PostController::class);
 
-    //Employee
-    // Route::resource('employee', EmployeeController::class);
+
+
+    //For unit testing purposes
     Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
     
-
 
 });
 

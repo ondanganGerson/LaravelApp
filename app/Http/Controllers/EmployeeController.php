@@ -41,7 +41,7 @@ class EmployeeController extends Controller
                 ];
                 
                 
-                return view('admin/index')->with('datas', $data);
+                return view('admin.index')->with('datas', $data);
             }
 
             return $data;

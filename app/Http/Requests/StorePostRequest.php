@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\Request;
 
 class StorePostRequest extends FormRequest
 {
@@ -13,7 +14,7 @@ class StorePostRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,10 +22,15 @@ class StorePostRequest extends FormRequest
      *
      * @return array<string, mixed>
      */
-    public function rules()
+    public function rules(Request $request)
     {
+        // if (empty($request->has('title'))) {
+        //     dd('jlj');
+        // };
+
         return [
-            //
+            'title' => 'required|unique:posts|max:255',
+            'description' => 'required',
         ];
     }
 }
