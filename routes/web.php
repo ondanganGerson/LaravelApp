@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-    //For unit testing purposes
+    //For unit testing purposes 100% done
     Route::get('/employee', [EmployeeController::class, 'index'])->name('employee');
     
 

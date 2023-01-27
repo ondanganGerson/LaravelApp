@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 
-//For OpenApi/Swagger purposes and postman
+//For OpenApi/Swagger purposes and postman 100% done
 Route::apiResource('posts', PostController::class);
 // Route::get('posts',[PostController::class, 'index']);
 // Route::get('posts/{id}',[PostController::class, 'show']);
@@ -28,5 +28,7 @@ Route::apiResource('posts', PostController::class);
 // Route::put('posts/{id}',[PostController::class, 'update']);
 // Route::delete('posts/{id}',[PostController::class, 'destroy']);
 
-
+//not use
 Route::post('/country', 'App\\Http\\Controllers\\StudentController');
+
+//For reset 
