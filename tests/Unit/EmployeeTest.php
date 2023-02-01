@@ -143,6 +143,21 @@ class EmployeeTest extends TestCase
         //Get data from employee 
         $responseData = $this->get(route('employee'));
 
+        //Add this some assertion for reference from buzz recruitment
+        // $response = $this->get('/v1/organization-type/list');
+
+        // $response->assertStatus(200);
+
+        // $response->assertJson([
+        //     "result" => [
+        //         [
+        //             "id" => $response['result'][0]['id'],
+        //             "description" => $response['result'][0]['description'],
+        //         ]
+        //     ],
+        //     "errors" => []
+        // ]);
+
 
         // dd(collect($responseData['datas']['typeA'])->contains('firstname', $employeeTypeData['type_a']));
         $this->assertTrue(collect($responseData['datas']['typeA'])->contains('firstname', $employeeTypeData['type_a']));
