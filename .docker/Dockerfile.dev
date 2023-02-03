@@ -1,0 +1,37 @@
+################################################################################
+# This is a general process and should not be changed.  [START]
+
+FROM php:8.1.13-apache
+
+RUN apt update \
+    && apt install -y g++ zip git \
+    && apt install -y zlib1g-dev libicu-dev libzip-dev libonig-dev \
+    && docker-php-ext-install intl opcache \
+    && docker-php-ext-install pdo mysqli pdo_mysql \
+    && pecl install apcu \
+    && docker-php-ext-enable apcu \
+    && docker-php-ext-configure zip \
+    && docker-php-ext-install zip \
+    && docker-php-ext-install mbstring \
+    && docker-php-ext-enable mbstring \
+    && a2enmod rewrite \
+    && a2enmod headers
+
+WORKDIR /var/www/html
+
+# composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# This is a general process and should not be changed. [ END ]
+################################################################################
+
+# Xdebug for Local Development
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && echo "xdebug.mode=develop,debug,coverage" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.mode=develop,debug,coverage" >> /usr/local/etc/php/conf.d/xdebug.ini
+
+# mail for Local Development
+RUN DEBIAN_FRONTEND=noninteractive apt install postfix -y \
+    && postconf -e relayhost=miilike-backend-mail:1025

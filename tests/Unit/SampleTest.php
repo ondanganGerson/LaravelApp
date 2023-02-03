@@ -55,4 +55,58 @@ class SampleTest extends TestCase
 
         $this->assertEquals($this->employee->getAgeAndName(), ['Gerson', 30]);
     }
+
+    //TEST FOR FUTURE REFERENCES
+
+    /* 1 */ //passing array to route as POST
+        // $data = [
+        //     'new_password' => $password,
+        //     'token' => $tokenRecord->token.$tokenRecord->id,
+        // ];
+
+        // $response = $this->postJson('v1/user/reset-password', $data);
+        
+
+    /* 2 */ //GET
+        // $response = $this->get('/v1/organization-type/list');
+        // $response->assertStatus(200);
+
+        // $response->assertJson([
+        //     "result" => [
+        //         [
+        //             "id" => $response['result'][0]['id'],
+        //             "description" => $response['result'][0]['description'],
+        //         ]
+        //     ],
+        //     "errors" => []
+        // ]);
+
+
+    /* 3 */// PASSING DATA AS ARRAY TO ROUTE DELETE
+        // $data = [
+        //     'id' => $projectSatellitefacility->facility_id,
+        // ];
+
+        // $response = $this->deleteJson('/v1/facility/delete', $data);  // in api Route::delete('/facility/delete', FacilityDeleteController::class);
+        // $response->assertStatus(200);
+        
+        //$this->assertSoftDeleted($projectSatellitefacility); => check if table has soft delete
+
+
+    /* 4 */ //empty database before creating new record
+        // $this->assertDatabaseEmpty('facilities');
+        // $this->assertDatabaseEmpty('project_facilities');
+        // $this->assertDatabaseEmpty('project_satellite_facilities');
+
+        // $facility = Facility::create([
+        //     'organization_id' => fake()->randomNumber(2),
+        //     'medical_organization_identification_number' => fake()->randomNumber(2),
+        //     'is_satellite' => fake()->randomNumber(2),
+        //     'contract_status' => fake()->randomNumber(2),
+        //     'contract_date' => now(),
+        //     'address_kana' => fake()->address(),
+        // ]);
+
+
 }
+
